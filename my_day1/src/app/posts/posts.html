@@ -1,0 +1,106 @@
+
+<div *ngIf="!showform">
+  <div class="card-grid">
+    <div class="card" *ngFor="let post of posts">
+      
+    
+     <app-date-user [userid]="post.userid" [date_create]="convertToDate(post.date)"></app-date-user>
+
+
+      <div class="card-header">
+        <h3>{{ post.title }}</h3>
+      </div>
+
+      <img [src]="post.imgurl" class="card-img-top" alt="post image" />
+
+      <div class="card-body">
+        <p>{{ post.body }}</p>
+      </div>
+
+  
+      <button class="btn"
+              [ngClass]="{
+                'btn-primary': post.like,
+                'btn-outline-dark': !post.like
+              }"
+              (click)="likecounter(post)">
+        Like {{ post.likes }}
+      </button>
+
+      <button class="btn btn-danger"
+              *ngIf="post._id"
+              (click)="removepost(post._id!)">
+        Delete This Post
+      </button>
+
+   
+      <div class="comments-section">
+        <input *ngIf="post._id"
+               type="text"
+               [(ngModel)]="commentMap[post._id!]"
+               placeholder="Write your comment" />
+
+        <button class="btn btn-success" (click)="addcomment(post)">
+          Comment
+        </button>
+
+        <div *ngIf="post.comments && post.comments.length > 0">
+
+          <h6>Comments</h6>
+          <ul>
+            <li *ngFor="let comment of post.comments">
+              {{ comment }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="form-container">
+  <form *ngIf="showform" (ngSubmit)="addpost()" #postform="ngForm">
+    
+    <label>Title</label>
+    <input type="text"
+           name="title"
+           required
+           [(ngModel)]="newpost.title"
+           #title="ngModel" />
+    <div *ngIf="title.invalid && title.touched" class="error">
+      Title is required
+    </div>
+
+    <label>Body</label>
+    <textarea name="body"
+              required
+              [(ngModel)]="newpost.body"
+              #body="ngModel"></textarea>
+    <div *ngIf="body.invalid && body.touched" class="error">
+      Body is required
+    </div>
+
+    <label>Image URL</label>
+    <input type="url"
+           name="imageUrl"
+           required
+           [(ngModel)]="newpost.imgurl" />
+
+    <label>User ID</label>
+    <input type="number"
+           name="userid"
+           required
+           [(ngModel)]="newpost.userid" />
+
+    <button type="submit" [disabled]="postform.invalid">
+      Submit to Add New Post
+    </button>
+  </form>
+</div>
+
+
+<button class="add-post-btn" (click)="toggleForm()">
+  {{ showform ? 'Hide Form' : 'Add New Post' }}
+</button>

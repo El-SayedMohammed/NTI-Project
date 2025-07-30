@@ -1,0 +1,54 @@
+<!-- <p>server works!</p>
+*******************string Interpolation/************************************** -->
+<!-- <h1 class="message"> {{message}}</h1> -->
+<!-- *****************Interpolation ******************************* -->
+<!-- <h2> {{getnum(5,5)}}</h2> -->
+<!-- ************************Property Binding************************************* -->
+<!-- <img [src]="imageurl"> -->
+<!-- **********************************Attribute Binding************************************** -->
+<!-- <td [attr.colspan]> .....</td> -->
+<!-- ***********************************Class Binding****************************************** -->
+<!-- <div [class.active]="isactive"> we are now active</div> -->
+<!-- ************************Style Binding*********************************** -->
+<!-- <p [style.color]="iserror? 'red' :'green'"> we are not the same </p> -->
+<!-- <****************************Two-Way Binding****************************************** -->
+<!--
+<input type="text" [(ngModel)]="username">
+<p> {{username}}</p> -->
+<!-- ************************************* Event Binding*********************************** -->
+ <!-- <button (click)="hello()"> click here</button> -->
+ <!-- ///////////////////////////////////////////////////////////// -->
+  <!-- <input type="text" (input)="changevalue($event)"> -->
+  <!-- ///////////////////////////////////////////////////////////// -->
+ <!-- ***********************Structural Directives****************************************** -->
+  <!-- <p *ngIf="ishere"> welcome back !!</p>
+  <ul>
+
+    <li *ngFor="let user of users;let i = index">
+      {{i+1}}.{{user}}
+    </li>
+  </ul>
+
+<div [ngSwitch]="result">
+  <p *ngSwitchCase="'success'">we don it </p>
+   <p *ngSwitchCase="'error'">we falid it  </p>
+     <p *ngSwitchCase="'load'">we waiting it  </p>
+</div>
+ <p *ngIf="ishere; else nothere"> welcome back !!</p>
+<ng-template #nothere>
+<p > we waiting your come back </p>
+</ng-template> -->
+<!-- ********************************Attribute Directives************************************** -->
+<!-- <p [ngClass]="{hidden:ishidden}"> click me</p> -->
+ <!-- <button class="btn btn-primary">Click Me</button> -->
+  <!-- <app-child [username]="parntusername"> </app-child> -->
+   <app-child (idevent)="result($event)" ></app-child>
+   {{childid}}
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+<div *ngIf="user" class="d-flex align-items-center">
+  <img 
+    [src]="user.imgurl" 
+    alt="User Image"
+    class="rounded-circle"
+    width="50"
+    height="50"
+  />
+  <div class="ms-3">
+    <h5>{{ user.name }}</h5>
+    <p>{{ date_create | date: 'short' }}</p>
+  </div>
+</div>
